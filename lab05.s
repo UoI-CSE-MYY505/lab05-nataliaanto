@@ -68,9 +68,8 @@ taken:
 # TODO:Instruction passes its result to the 2nd following instruction
 
     add  t0, s1, s2      # t0 = s1 + s2
-    add  t1, t0, s3      # t1 = t0 + s3
-    add  t2, t1, s1      # t2 = t1 + s1
-    add  zero, zero, zero 
+    add  t1, t0, s3      # t1 = t0 + s3 
+    add  t2, t0, s1      
 
 
     # nop instructions added between examples
@@ -84,9 +83,7 @@ taken:
 
     add  t0, s1, s2      # t0 = s1 + s2
     add  t0, t0, s3      # t0 = t0 + s3
-    add  t1, t0, s4      # t1 = t0 + s4 
-    
-    add  zero, zero, zero 
+    add  t1, t0, s4      # t1 = t0 + s4
     
     
     # nop instructions added between examples
@@ -98,13 +95,11 @@ taken:
 # TODO:Load stalling for 1 cycle to pass value to a NOT-TAKEN branch
 
 
-    lw   t3, 8(a0)       # t3 = storage[2] = 11
-    beq  t3, s2, label   # Branch not taken (t3 ≠ s2)
-    add  t4, t3, s1      # t4 = t3 + s1
+    lw   t3, 4(a0)       # t3 = storage[1] = 10
+    beq  t3, s2, label   
+    add  t4, t3, s1      # t4 = t3 + s1 
     
 label:
-    add  zero, zero, zero 
-
 
 
     # nop instructions added between examples
@@ -118,10 +113,8 @@ label:
     beq  s1, s1, next2   # Branch always taken
     add  t0, s1, s2      
     
-next2:
+    next2:
     add  t1, s3, s4      
-    add  zero, zero, zero  
-
 
 exit:  
     addi      a7, zero, 10    
